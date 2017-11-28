@@ -68,7 +68,7 @@
                         $pass = password_hash($pass, PASSWORD_DEFAULT);
                         list(, $hashalgo, $cost, $saltedpass) = explode('$', $pass);
                         $salt = substr($saltedpass, 0, 22);
-                        $query = "INSERT INTO User (userName, email, password, address, userPerm) VALUES ('$user', '$email', '$pass', '$addr', 0)";
+                        $query = "INSERT INTO User (userName, email, password, address, userPerm) VALUES ('$user', '$email', MD5('$pass'), '$addr', 0)";
                         if(mysqli_query($conn, $query)){
                             echo "Record added successfully.";
                         } else{
